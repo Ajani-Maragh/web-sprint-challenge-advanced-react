@@ -47,18 +47,10 @@ export default function AppFunctional(props) {
     const x = index % 3
     const y = Math.floor(index / 3)
 
-  if (direction === 'left' && x > 0) {
-      return index - 1
-  }
-  if (direction === 'right' && x < 2) {
-    return index + 1
-  }
-  if (direction === 'up' && y > 0) {
-    return index - 3
-  }
-  if (direction === 'down' && y < 2) {
-    return index + 3
-  }
+  if (direction === 'left' && x > 0) return index - 1
+  if (direction === 'right' && x < 2) return index + 1
+  if (direction === 'up' && y > 0) return index - 3
+  if (direction === 'down' && y < 2) return index + 3
   return index
 }
 
@@ -79,26 +71,27 @@ export default function AppFunctional(props) {
 
   function onChange(evt) {
     // You will need this to update the value of the input.
+    setEmail(evt.target.value)
   }
 
   function onSubmit(evt) {
     // Use a POST request to send a payload to the server.
+    evt.preventDefault()
+
   }
 
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
-        <h3 id="coordinates">Coordinates (2, 2)</h3>
-        <h3 id="steps">You moved 0 times</h3>
+        <h3 id="coordinates">{getXYMessage()}</h3>
+        <h3 id="steps">You moved {steps} times</h3>
       </div>
       <div id="grid">
-        {
-          [0, 1, 2, 3, 4, 5, 6, 7, 8].map(idx => (
-            <div key={idx} className={`square${idx === 4 ? ' active' : ''}`}>
-              {idx === 4 ? 'B' : null}
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8].map(idx => (
+            <div key={idx} className={`square${idx === index ? ' active' : ''}`}>
+              {idx === index ? 'B' : null}
             </div>
-          ))
-        }
+          ))}
       </div>
       <div className="info">
         <h3 id="message"></h3>
