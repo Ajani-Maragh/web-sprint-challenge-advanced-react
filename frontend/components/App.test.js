@@ -34,7 +34,7 @@ describe('AppFunctional Component', () => {
     expect(screen.getByText('Ouch: email is required.')).toBeInTheDocument()  
   })
   test('5 clicking UP updates coordinates', async () => {
-    const upButton = screen.getByRole('button', { name: /up/i });
+    const upButton = screen.getByRole('button', { name: 'UP' });
     await userEvent.click(upButton);
     expect(screen.getByText('Coordinates (2, 1)')).toBeInTheDocument();
   });
