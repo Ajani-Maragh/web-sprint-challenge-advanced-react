@@ -94,6 +94,7 @@ export default function AppFunctional(props) {
     axios.post("http://localhost:9000/api/result", payload)
     .then(response => {
       setMessage(response.data.message)
+      setEmail('')
       //reset(true)
     })
     .catch(error => {
