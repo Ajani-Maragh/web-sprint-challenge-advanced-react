@@ -38,7 +38,7 @@ describe('AppFunctional Component', () => {
     await userEvent.type(emailInput, 'Ajani@Maragh.com')
     const submitButton = screen.getByRole('button', {name: 'Submit'})
     await userEvent.click(submitButton)
-    const successMessage = await screen.findByText("Ajani win #28")
+    const successMessage = await screen.findByText("Ajani win #34")
     expect(successMessage).toBeInTheDocument()
   })
   })
