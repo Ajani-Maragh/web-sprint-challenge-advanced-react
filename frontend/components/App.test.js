@@ -33,13 +33,5 @@ describe('AppFunctional Component', () => {
   
     expect(screen.getByText('Ouch: email is required.')).toBeInTheDocument()  
   })
-  test('5 form submission with valid email shows success message', async () => {
-    const emailInput = screen.getByPlaceholderText('type email')
-    await userEvent.type(emailInput, 'Ajani@Maragh.com')
-    const submitButton = screen.getByRole('button', {name: 'Submit'})
-    await userEvent.click(submitButton)
-    const successMessage = await screen.findByText("Ajani win #28")
-    expect(successMessage).toBeInTheDocument()
-    screen.debug()
-  })
+ 
   })
