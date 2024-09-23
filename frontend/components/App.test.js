@@ -40,5 +40,6 @@ describe('AppFunctional Component', () => {
     await userEvent.click(submitButton)
     const successMessage = await screen.findByText("Ajani win #28")
     expect(successMessage).toBeInTheDocument()
+    screen.debug()
   })
   })
