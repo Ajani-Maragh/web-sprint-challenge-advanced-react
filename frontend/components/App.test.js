@@ -21,4 +21,24 @@ describe('AppFunctional Component', () => {
     expect(screen.getByText('RIGHT')).toBeInTheDocument()
     expect(screen.getByText('reset')).toBeInTheDocument()
    })
+   test('3 prevent moving out of bounds and display error message', async () => {
+    const upButton = screen.getByText('UP')
+    await userEvent.click(upButton) 
+    await userEvent.click(upButton)  
+    expect(screen.getByText("You can't go up")).toBeInTheDocument() 
+  })
+  test('4 form submission without email shows an error message', async () => {
+    const submitButton = screen.getByRole('button', { name: 'Submit' })  
+    await userEvent.click(submitButton)  
+  
+    expect(screen.getByText('Ouch: email is required.')).toBeInTheDocument()  
+  })
+  test('5 form submission with valid email shows success message', async () => {
+    const emailInput = screen.getByPlaceholderText('type email')
+    await userEvent.type(emailInput, 'Ajani@Maragh.com')
+    const submitButton = screen.getByRole('button', {name: 'Submit'})
+    await userEvent.click(submitButton)
+    const successMessage = await screen.findByText("Ajani win #28")
+    expect(successMessage).toBeInTheDocument()
+  })
   })
